@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>داشبورد مشاوره برند و تبلیغات</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f5f2;--card:#fff;--tx:#1d1d1b;--mut:#6b6b66;--bd:#e3e1db;--ac:#c2410c;--on:#fff;--ok:#15803d;--bad:#b91c1c;--soft:#fbeee6;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151514;--card:#201f1e;--tx:#f1efea;--mut:#a09d95;--bd:#34332f;--ac:#fb923c;--on:#1a1008;--ok:#4ade80;--bad:#f87171;--soft:#2b2119;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#151514;--card:#201f1e;--tx:#f1efea;--mut:#a09d95;--bd:#34332f;--ac:#fb923c;--on:#1a1008;--ok:#4ade80;--bad:#f87171;--soft:#2b2119;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.7 Vazirmatn,Tahoma,sans-serif}
+.app{display:grid;grid-template-columns:270px 1fr;gap:16px;max-width:1150px;margin:0 auto;padding:16px}
+@media(max-width:760px){.app{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:12px}
+h1{font-size:19px;margin:0 0 4px;font-weight:800}h2{font-size:16px;margin:0 0 10px}h3{font-size:14px;margin:0}
+.mut{color:var(--mut);font-size:13px}
+input,select,textarea,button{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:9px;padding:7px 10px;max-width:100%}
+textarea{width:100%;min-height:80px}
+button{cursor:pointer}button.p{background:var(--ac);color:var(--on);border-color:var(--ac);font-weight:600}
+button.d{color:var(--bad)}button.s{padding:3px 9px;font-size:13px}
+.cl{display:block;width:100%;text-align:right;margin-bottom:6px;background:var(--card)}
+.cl.on{border-color:var(--ac);background:var(--soft)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.tabs button.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+label{display:block;font-size:13px;color:var(--mut)}label input,label select{width:100%;margin-top:2px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:end}
+.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden;margin:6px 0}.bar i{display:block;height:100%;background:var(--ac)}
+.up{color:var(--ok)}.dn{color:var(--bad)}
+.big{font-size:24px;font-weight:800}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:6px 8px;border-bottom:1px solid var(--bd);text-align:right}
+.scroll{overflow-x:auto}
+#toast{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:16px;background:var(--tx);color:var(--bg);padding:8px 14px;border-radius:10px;display:none}
+@media print{body *{visibility:hidden}#rep,#rep *{visibility:visible}#rep{position:absolute;inset:0}}
+</style>
+<style>
+:root{--bg:#f1f7f3;--card:#fff;--tx:#08120c;--mut:#5d7366;--bd:#d3e3d8;--ac:#15803d;--ac2:#22c55e;--on:#fff;--soft:#e3f3e8;--ok:#15803d;--bad:#b91c1c;--glow:rgba(34,197,94,.16);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#060a07;--card:#0e1610;--tx:#e8f3ea;--mut:#86a08e;--bd:#1c2c21;--ac:#22c55e;--ac2:#4ade80;--on:#03120a;--soft:#11261a;--ok:#4ade80;--bad:#f87171;--glow:rgba(34,197,94,.14);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#060a07;--card:#0e1610;--tx:#e8f3ea;--mut:#86a08e;--bd:#1c2c21;--ac:#22c55e;--ac2:#4ade80;--on:#03120a;--soft:#11261a;--ok:#4ade80;--bad:#f87171;--glow:rgba(34,197,94,.14);color-scheme:dark}
+[hidden]{display:none!important}
+body{background:radial-gradient(900px 420px at 85% -80px,var(--glow),transparent 70%),var(--bg)}
+.card{border-radius:18px;box-shadow:0 1px 0 var(--bd),0 12px 30px -18px rgba(0,0,0,.5)}
+aside .card:first-child{background:linear-gradient(160deg,var(--soft),var(--card))}
+h1{letter-spacing:-.2px}
+input,select,textarea{border-radius:11px}input:focus,select:focus,textarea:focus{outline:2px solid var(--ac);outline-offset:1px}
+button{border-radius:11px;transition:.15s}button:hover{border-color:var(--ac)}
+button.p{background:linear-gradient(135deg,var(--ac),var(--ac2));border:0;box-shadow:0 6px 16px -8px var(--ac)}
+.tabs button{border-radius:999px;padding:6px 16px}.tabs button.on{background:linear-gradient(135deg,var(--ac),var(--ac2));border:0}
+.cl.on{box-shadow:inset -3px 0 0 var(--ac)}
+.big{color:var(--ac)}.bar i{background:linear-gradient(90deg,var(--ac),var(--ac2))}
+.jd{display:flex;gap:4px}.jd select{flex:1;min-width:0;margin-top:2px;padding:7px 4px}
+.w{width:100%}.chip{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.badge{background:var(--soft);color:var(--ac);border:1px solid var(--bd);border-radius:999px;padding:0 10px;font-size:12px}
+.authwrap{min-height:100vh;display:grid;place-items:center;padding:20px}
+.authcard{width:100%;max-width:400px;background:var(--card);border:1px solid var(--bd);border-radius:24px;padding:28px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);text-align:center}
+.authcard label{text-align:right}.authcard .tabs{justify-content:center}
+.logo{width:56px;height:56px;margin:0 auto 12px;border-radius:16px;display:grid;place-items:center;font-size:26px;color:var(--on);background:linear-gradient(135deg,var(--ac),var(--ac2));box-shadow:0 10px 24px -10px var(--ac)}
+</style>
+</head>
+<body>
+<div id="auth"><div class="authwrap"><div class="mut">در حال بارگذاری…</div></div></div>
+<div class="app" id="appw" hidden>
+  <aside>
+    <div class="card"><h1>داشبورد مشاوره</h1><div class="mut">مجموعه‌ها، KPIها، کمپین‌ها و گزارش</div>
+      <div id="me" style="margin-top:10px"></div></div>
+    <div class="card"><h2>مجموعه‌ها</h2><div id="list"></div>
+      <div class="row" id="newRow" style="margin-top:8px"><input id="newName" placeholder="نام مجموعه جدید" style="flex:1;min-width:0"><button class="p" data-a="addClient">افزودن</button></div></div>
+  </aside>
+  <main id="main"></main>
+</div>
+<div id="toast"></div>
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const nf=n=>Number(n).toLocaleString('fa-IR',{maximumFractionDigits:2});
+const fd0=d=>{try{return d?new Intl.DateTimeFormat('fa-IR',{dateStyle:'medium'}).format(new Date(d+'T12:00:00')):'—'}catch(e){return d||'—'}};
+const uid=()=>Math.random().toString(36).slice(2,9);
+const p2=n=>String(n).padStart(2,'0');
+const today=()=>{const n=new Date();return n.getFullYear()+'-'+p2(n.getMonth()+1)+'-'+p2(n.getDate())};
+const JM=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+const nz=n=>Number(n).toLocaleString('fa-IR',{useGrouping:false});
+const T=Math.trunc;
+function g2j(gy,gm,gd){const gdm=[0,31,59,90,120,151,181,212,243,273,304,334];let jy=gy<=1600?0:979;gy-=gy<=1600?621:1600;const g2=gm>2?gy+1:gy;let days=365*gy+T((g2+3)/4)-T((g2+99)/100)+T((g2+399)/400)-80+gd+gdm[gm-1];jy+=33*T(days/12053);days%=12053;jy+=4*T(days/1461);days%=1461;if(days>365){jy+=T((days-1)/365);days=(days-1)%365}const jm=days<186?1+T(days/31):7+T((days-186)/30);const jd=1+(days<186?days%31:(days-186)%30);return[jy,jm,jd]}
+function j2g(jy,jm,jd){let gy=jy<=979?621:1600;jy-=jy<=979?0:979;let days=365*jy+T(jy/33)*8+T(((jy%33)+3)/4)+78+jd+(jm<7?(jm-1)*31:(jm-7)*30+186);gy+=400*T(days/146097);days%=146097;if(days>36524){gy+=100*T(--days/36524);days%=36524;if(days>=365)days++}gy+=4*T(days/1461);days%=1461;if(days>365){gy+=T((days-1)/365);days=(days-1)%365}let gd=days+1;const s=[0,31,((gy%4==0&&gy%100!=0)||gy%400==0)?29:28,31,30,31,30,31,31,30,31,30,31];let gm=0;for(;gm<13;gm++){if(gd<=s[gm])break;gd-=s[gm]}return[gy,gm,gd]}
+const fd=d=>{if(!d)return'—';const[y,m,x]=d.split('-').map(Number),j=g2j(y,m,x);return nz(j[2])+' '+JM[j[1]-1]+' '+nz(j[0])};
+function jdate(iso,cls,extra){const t=g2j(...today().split('-').map(Number)),j=iso?g2j(...iso.split('-').map(Number)):[0,0,0];const ys=new Set();for(let i=t[0]-8;i<=t[0]+3;i++)ys.add(i);if(j[0])ys.add(j[0]);const o=(a,s)=>a.map(x=>`<option value="${x[0]}" ${x[0]===s?'selected':''}>${x[1]}</option>`).join('');return `<span class="jd ${cls||''}" ${extra||''}><select class="jy"><option value="">سال</option>${o([...ys].sort().map(y=>[y,nz(y)]),j[0])}</select><select class="jm"><option value="">ماه</option>${o(JM.map((m,i)=>[i+1,m]),j[1])}</select><select class="jdd"><option value="">روز</option>${o(Array.from({length:31},(_,i)=>[i+1,nz(i+1)]),j[2])}</select></span>`}
+function getD(el){if(!el)return'';const y=+el.querySelector('.jy').value,m=+el.querySelector('.jm').value;let d=+el.querySelector('.jdd').value;if(!y||!m||!d)return'';d=Math.min(d,m<7?31:m<12?30:29);const g=j2g(y,m,d);return g[0]+'-'+p2(g[1])+'-'+p2(g[2])}
+const STAT={plan:'برنامه‌ریزی',run:'در حال اجرا',done:'پایان‌یافته',stop:'متوقف'};
+const PRESETS=['رشد فالوور','فروش ماهانه','نرخ تعامل (٪)','نرخ تبدیل (٪)','هزینه جذب مشتری','بازدید وب‌سایت','رضایت مشتری (۱ تا ۵)'];
+let db=null,user=null,me=null,uidv=null,role=null,realRole=null,isEd=false,users={},reqs={},clients={},cur=null,tab='profile',confirmDel=null,authTab='login',started=false,rqSub=null;
+
+function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',6000)}
+function norm(c){c.kpis=c.kpis||[];c.entries=c.entries||[];c.campaigns=c.campaigns||[];c.meetings=c.meetings||[];return c}
+function save(c){c.updated=Date.now();c=JSON.parse(JSON.stringify(c));clients[c.id]=c;if(db)db.collection('clients').doc(c.id).set(c).catch(x=>toast(((x&&(x.code+' '+x.message))||'')+' | '+'ذخیره نشد؛ دوباره تلاش کنید'));render()}
+const C=()=>cur&&clients[cur]?norm(clients[cur]):null;
+
+const dn=d=>Date.parse(d+'T12:00:00')/864e5;
+const isIG=p=>/اینستا|insta/i.test(p.channel||'');
+function setD(el,iso){const j=g2j(...iso.split('-').map(Number));el.querySelector('.jy').value=j[0];el.querySelector('.jm').value=j[1];el.querySelector('.jdd').value=j[2]}
+function chart(L,o){o=o||{};const all=L.flatMap(l=>l.pts);if(!all.length)return'<div class="mut">هنوز داده‌ای ثبت نشده</div>';
+  const W=340,H=140,P=34,ds=all.map(p=>dn(p.d));let a=Math.min(...ds,o.from?dn(o.from):1e9),b=Math.max(...ds,o.to?dn(o.to):-1e9);if(b===a)b=a+1;
+  const ys=all.map(p=>p.v);if(o.target)ys.push(o.target);if(o.zero)ys.push(0);const mn=Math.min(...ys),mx=Math.max(...ys),r=(mx-mn)||1;
+  const X=d=>P+((dn(d)-a)/(b-a))*(W-P-10),Y=v=>H-22-((v-mn)/r)*(H-38),iso=n=>new Date(n*864e5).toISOString().slice(0,10);
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" direction="ltr" style="max-width:540px"><g stroke="currentColor" stroke-opacity=".15"><line x1="${P}" x2="${W-10}" y1="${Y(mn)}" y2="${Y(mn)}"/><line x1="${P}" x2="${W-10}" y1="${Y(mx)}" y2="${Y(mx)}"/></g><g font-size="9" fill="currentColor" fill-opacity=".75"><text x="${P-4}" y="${Y(mx)+3}" text-anchor="end">${nf(mx)}</text><text x="${P-4}" y="${Y(mn)+3}" text-anchor="end">${nf(mn)}</text><text x="${P}" y="${H-6}">${fd(iso(a))}</text><text x="${W-10}" y="${H-6}" text-anchor="end">${fd(iso(b))}</text></g>`;
+  if(o.target)s+=`<line x1="${P}" x2="${W-10}" y1="${Y(o.target)}" y2="${Y(o.target)}" stroke="#f59e0b" stroke-dasharray="4 3"/><text x="${W-10}" y="${Y(o.target)-3}" font-size="9" fill="#f59e0b" text-anchor="end">هدف ${nf(o.target)}</text>`;
+  L.forEach(l=>{const pts=l.pts.slice().sort((x,y)=>x.d<y.d?-1:1);
+    if(l.bar)s+=pts.map(p=>`<rect x="${X(p.d)-4}" y="${Math.min(Y(p.v),Y(0))}" width="8" height="${Math.abs(Y(p.v)-Y(0))||1}" fill="${l.c}" rx="2"/>`).join('');
+    else s+=`<polyline fill="none" stroke="${l.c}" stroke-width="2" points="${pts.map(p=>X(p.d)+','+Y(p.v)).join(' ')}"/>`+pts.map(p=>`<circle cx="${X(p.d)}" cy="${Y(p.v)}" r="2.8" fill="${l.c}"/>`).join('')});
+  return s+'</svg>'+(L.length>1?`<div class="mut">${L.map(l=>`<span style="color:${l.c}">●</span> ${l.n}`).join(' &nbsp; ')}</div>`:'')}
+const mser=p=>(p.m||[]).slice().sort((a,b)=>a.d<b.d?-1:1);
+function igTot(p){const s=mser(p),g=s.reduce((a,x)=>a+(+x.g||0),0),l=s.reduce((a,x)=>a+(+x.l||0),0);return{g,l,n:g-l}}
+function igCharts(p){const s=mser(p);if(!s.length)return'';let cg=0,cl=0;const cu=s.map(x=>{cg+=+x.g||0;cl+=+x.l||0;return{d:x.d,g:cg,l:cl,n:cg-cl}}),G='#16a34a',R='#dc2626',B='#2563eb';
+  return `<h3 style="margin-top:10px">فالوور جذب‌شده</h3>${chart([{pts:s.map(x=>({d:x.d,v:+x.g||0})),c:G,bar:1}],{zero:1})}<h3>آنفالو</h3>${chart([{pts:s.map(x=>({d:x.d,v:+x.l||0})),c:R,bar:1}],{zero:1})}<h3>نمودار کلی (تجمعی)</h3>${chart([{pts:cu.map(x=>({d:x.d,v:x.g})),c:G,n:'جذب‌شده'},{pts:cu.map(x=>({d:x.d,v:x.l})),c:R,n:'آنفالو'},{pts:cu.map(x=>({d:x.d,v:x.n})),c:B,n:'خالص'}],{zero:1})}`}
+function igBlock(p){if(!isIG(p))return'<div class="mut" style="margin-top:8px">برای ثبت آمار فالوور و آنفالو، کانال کمپین را «اینستاگرام» بنویسید.</div>';const t=igTot(p);
+  return `<div style="margin-top:12px;padding-top:10px;border-top:1px dashed var(--bd)"><h3>آمار فالوور اینستاگرام</h3><div class="mut">جمع: ${nf(t.g)} جذب · ${nf(t.l)} آنفالو · خالص ${nf(t.n)}</div><div class="row" style="margin-top:8px" data-m="${p.id}"><label>تاریخ${jdate(today(),'md2')}</label><label>جذب‌شده<input type="number" class="mg"></label><label>آنفالو<input type="number" class="ml"></label><button class="p" data-a="addM" data-id="${p.id}">ثبت / ویرایش</button></div><div class="mut" style="margin-top:6px">${mser(p).reverse().map(x=>`<a href="#" data-a="pickM" data-id="${p.id}" data-e="${x.i}">${fd(x.d)}: +${nf(x.g)} / −${nf(x.l)}</a> <a href="#" class="dn" data-a="delM" data-id="${p.id}" data-e="${x.i}">×</a>`).join(' · ')}</div>${igCharts(p)}</div>`}
+function repCharts(c){let h='';const ks=c.kpis.filter(k=>series(c,k.id).length);if(ks.length)h+='<h2>روند شاخص‌ها</h2>'+ks.map(k=>`<h3>${esc(k.name)}</h3>${chart([{pts:series(c,k.id).map(e=>({d:e.d,v:e.v})),c:'#16a34a'}],{from:k.from,to:k.to,target:k.target})}`).join('');
+  const ig=c.campaigns.filter(p=>isIG(p)&&(p.m||[]).length);if(ig.length)h+='<h2>آمار فالوور کمپین‌ها</h2>'+ig.map(p=>{const t=igTot(p);return `<h3>${esc(p.name)}</h3><p>جذب‌شده: ${nf(t.g)} · آنفالو: ${nf(t.l)} · خالص: ${nf(t.n)}</p>${igCharts(p)}`}).join('');return h}
+function series(c,k){return c.entries.filter(e=>e.k===k).sort((a,b)=>a.d<b.d?-1:1)}
+function spark(pts){
+  if(pts.length<2)return '<div class="mut">برای نمودار حداقل دو مقدار ثبت کنید</div>';
+  const W=300,H=60,v=pts.map(p=>p.v),mn=Math.min(...v),mx=Math.max(...v),r=(mx-mn)||1;
+  const xy=pts.map((p,i)=>[(i/(pts.length-1))*(W-8)+4,H-6-((p.v-mn)/r)*(H-12)]);
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="60" preserveAspectRatio="none"><polyline fill="none" stroke="var(--ac)" stroke-width="2" points="${xy.map(p=>p.join(',')).join(' ')}"/>${xy.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="2.5" fill="var(--ac)"/>`).join('')}</svg>`;
+}
+function stats(c,k){
+  const s=series(c,k.id),f=s[0],l=s[s.length-1];
+  const ch=f&&l&&f.v!==0&&s.length>1?((l.v-f.v)/Math.abs(f.v))*100:null;
+  const pr=l&&k.target?Math.max(0,Math.min(100,(l.v/k.target)*100)):null;
+  return{s,f,l,ch,pr};
+}
+const chTxt=ch=>ch==null?'—':`<span class="${ch>=0?'up':'dn'}">${ch>=0?'▲':'▼'} ${nf(Math.abs(ch))}٪</span>`;
+
+function renderList(){
+  const arr=Object.values(clients).sort((a,b)=>(a.name||'').localeCompare(b.name||'','fa'));
+  $('#list').innerHTML=arr.length?arr.map(c=>`<button class="cl ${c.id===cur?'on':''}" data-a="open" data-id="${c.id}">${esc(c.name)}<div class="mut">${esc(c.industry||'')}</div></button>`).join(''):'<div class="mut">هنوز مجموعه‌ای ندارید.</div>';
+}
+function render(){
+  applyRole();if(cur===null&&tab==='users'&&role==='admin'){renderList();renderUsers();return}
+  renderList();
+  const c=C(),m=$('#main');
+  if(!c){m.innerHTML='<div class="card"><h2>شروع کنید</h2><p class="mut">از ستون کناری یک مجموعه (کارفرما) اضافه کنید یا یکی را انتخاب کنید. برای هر مجموعه پروفایل، KPI، کمپین، جلسات و گزارش دارید.</p></div>';return}
+  const T=[['profile','پروفایل'],['kpi','KPIها'],['camp','کمپین‌ها'],['meet','جلسات و یادداشت'],['report','گزارش']];
+  m.innerHTML=`<div class="card"><h1>${esc(c.name)}</h1><div class="mut">${esc(c.industry||'')}${c.since?' · از '+fd(c.since):''}</div></div>
+  <div class="tabs">${T.map(t=>`<button class="${tab===t[0]?'on':''}" data-a="tab" data-id="${t[0]}">${t[1]}</button>`).join('')}</div>
+  <div id="pane">${({profile:pProfile,kpi:pKpi,camp:pCamp,meet:pMeet,report:pReport})[tab](c)}</div>`;if(!canW())lock(m);
+}
+const fld=(f,l,v,t)=>t==='date'?`<label>${l}${jdate(v,'','data-f="'+f+'"')}</label>`:`<label>${l}<input type="${t||'text'}" data-f="${f}" value="${esc(v)}"></label>`;
+function pProfile(c){
+  return `<div class="card"><h2>اطلاعات مجموعه</h2><div class="g">${fld('name','نام مجموعه',c.name)}${fld('industry','حوزه فعالیت',c.industry)}${fld('contact','نام رابط',c.contact)}${fld('phone','تلفن / ایمیل',c.phone)}${fld('since','شروع همکاری',c.since,'date')}${fld('budget','بودجه تبلیغات ماهانه',c.budget)}${fld('channels','کانال‌ها (اینستاگرام، تلگرام...)',c.channels)}${fld('audience','مخاطب هدف',c.audience)}</div>
+  <label style="margin-top:10px">خلاصه برند و وضعیت فعلی<textarea data-f="about">${esc(c.about)}</textarea></label>
+  <label style="margin-top:10px">اهداف مشاوره<textarea data-f="goals">${esc(c.goals)}</textarea></label>
+  <div style="margin-top:12px"><button class="d s" data-a="delClient">${confirmDel===c.id?'برای حذف دوباره بزنید':'حذف مجموعه'}</button></div></div>`;
+}
+function pKpi(c){
+  const cards=c.kpis.map(k=>{
+    const st=stats(c,k),u=esc(k.unit||'');
+    return `<div class="card"><div class="row" style="justify-content:space-between;align-items:center"><h3>${esc(k.name)}</h3><button class="d s" data-a="delKpi" data-id="${k.id}">حذف</button></div>
+    <div class="row" style="align-items:baseline;gap:14px"><span class="big">${st.l?nf(st.l.v):'—'}</span><span class="mut">${u}</span><span>${chTxt(st.ch)}</span><span class="mut">${k.target?'هدف: '+nf(k.target):''}</span></div>
+    ${st.pr!=null?`<div class="bar"><i style="width:${st.pr}%"></i></div><div class="mut">${nf(st.pr)}٪ از هدف</div>`:''}
+    ${chart([{pts:st.s.map(e=>({d:e.d,v:e.v})),c:'#22c55e'}],{from:k.from,to:k.to,target:k.target})}
+    <div class="row" style="margin-top:8px" data-kp="${k.id}"><label>بازه از${jdate(k.from||'','kf')}</label><label>تا${jdate(k.to||'','kt')}</label><label>هدف<input type="number" step="any" class="ktg" value="${k.target||''}"></label><button class="s" data-a="saveKpi" data-id="${k.id}">ذخیره بازه و هدف</button></div><div class="row" style="margin-top:8px" data-k="${k.id}"><label>تاریخ${jdate(today(),'ed')}</label><label>مقدار<input type="number" step="any" class="ev"></label><button class="p" data-a="addEntry" data-id="${k.id}">ثبت</button></div>
+    <div class="mut" style="margin-top:6px">${st.s.slice().reverse().map(e=>`<a href="#" data-a="pick" data-id="${e.i}">${fd(e.d)}: ${nf(e.v)}</a> <a href="#" data-a="delEntry" data-id="${e.i}" class="dn">×</a>`).join(' · ')}</div></div>`}).join('');
+  return `<div class="card"><h2>افزودن شاخص (KPI)</h2><div class="row"><label>نام<input id="kn" list="pre" placeholder="مثلاً رشد فالوور"><datalist id="pre">${PRESETS.map(p=>`<option value="${p}">`).join('')}</datalist></label><label>واحد<input id="ku" placeholder="نفر، تومان، ٪"></label><label>هدف<input id="kt" type="number" step="any"></label><label>بازه از${jdate('','','id="kfrom"')}</label><label>تا${jdate('','','id="kto"')}</label><button class="p" data-a="addKpi">افزودن</button></div></div>${cards||'<div class="mut">شاخصی تعریف نشده.</div>'}`;
+}
+function pCamp(c){
+  const cards=c.campaigns.slice().reverse().map(p=>`<div class="card"><div class="row" style="justify-content:space-between;align-items:center"><h3>${esc(p.name)} <span class="mut">· ${esc(p.channel||'')}</span></h3><button class="d s" data-a="delCamp" data-id="${p.id}">حذف</button></div>
+  <div class="mut">${fd(p.start)} تا ${fd(p.end)} · بودجه: ${p.budget?nf(p.budget):'—'} · وضعیت: ${STAT[p.status]||''}</div>
+  <div class="row" style="margin-top:8px" data-c="${p.id}"><label>وضعیت<select data-cf="status">${Object.entries(STAT).map(([k,v])=>`<option value="${k}" ${p.status===k?'selected':''}>${v}</option>`).join('')}</select></label>
+  <label>امتیاز بازخورد (۱ تا ۵)<select data-cf="score"><option value="">—</option>${[1,2,3,4,5].map(n=>`<option value="${n}" ${+p.score===n?'selected':''}>${nf(n)}</option>`).join('')}</select></label></div>
+  <label style="margin-top:8px">بازخورد و نتیجه<textarea data-cf="notes" data-c="${p.id}">${esc(p.notes)}</textarea></label>${igBlock(p)}</div>`).join('');
+  return `<div class="card"><h2>کمپین جدید</h2><div class="row"><label>نام<input id="cn"></label><label>کانال<input id="cc" placeholder="اینستاگرام..."></label><label>بودجه<input id="cb" type="number"></label><label>شروع${jdate('','','id="cs"')}</label><label>پایان${jdate('','','id="ce"')}</label><button class="p" data-a="addCamp">افزودن</button></div></div>${cards||'<div class="mut">کمپینی ثبت نشده.</div>'}`;
+}
+function pMeet(c){
+  return `<div class="card"><h2>ثبت جلسه / یادداشت</h2><label>تاریخ${jdate(today(),'','id="md"')}</label><textarea id="mt" placeholder="تصمیم‌ها، پیشنهادها، اقدام‌های بعدی..." style="margin-top:8px"></textarea><button class="p" data-a="addMeet" style="margin-top:8px">ثبت</button></div>
+  ${c.meetings.slice().sort((a,b)=>a.d<b.d?1:-1).map(m=>`<div class="card"><div class="row" style="justify-content:space-between"><b>${fd(m.d)}</b><button class="d s" data-a="delMeet" data-id="${m.id}">حذف</button></div><div style="white-space:pre-wrap">${esc(m.t)}</div></div>`).join('')}`;
+}
+function repBody(c){
+  const kr=c.kpis.map(k=>{const s=stats(c,k);return `<tr><td>${esc(k.name)}</td><td>${s.f?nf(s.f.v):'—'}</td><td>${s.l?nf(s.l.v):'—'}</td><td>${k.target?nf(k.target):'—'}</td><td>${s.ch==null?'—':(s.ch>=0?'▲ ':'▼ ')+nf(Math.abs(s.ch))+'٪'}</td><td>${s.pr==null?'—':nf(s.pr)+'٪'}</td></tr>`}).join('');
+  const cr=c.campaigns.map(p=>`<tr><td>${esc(p.name)}</td><td>${esc(p.channel||'')}</td><td>${p.budget?nf(p.budget):'—'}</td><td>${STAT[p.status]||''}</td><td>${p.score?nf(p.score)+' از ۵':'—'}</td><td>${esc(p.notes||'')}</td></tr>`).join('');
+  const mr=c.meetings.slice().sort((a,b)=>a.d<b.d?1:-1).slice(0,5).map(m=>`<p><b>${fd(m.d)}:</b> ${esc(m.t)}</p>`).join('');
+  return `<h1>گزارش عملکرد: ${esc(c.name)}</h1><p class="mut">تاریخ گزارش: ${fd(today())} ${c.industry?'· '+esc(c.industry):''}</p>
+  ${c.goals?`<h2>اهداف مشاوره</h2><p style="white-space:pre-wrap">${esc(c.goals)}</p>`:''}
+  <h2>شاخص‌های کلیدی (KPI)</h2><div class="scroll"><table><tr><th>شاخص</th><th>مقدار اولیه</th><th>مقدار فعلی</th><th>هدف</th><th>تغییر</th><th>تحقق هدف</th></tr>${kr||'<tr><td colspan="6">—</td></tr>'}</table></div>
+  <h2>کمپین‌ها</h2><div class="scroll"><table><tr><th>کمپین</th><th>کانال</th><th>بودجه</th><th>وضعیت</th><th>بازخورد</th><th>نتیجه</th></tr>${cr||'<tr><td colspan="6">—</td></tr>'}</table></div>
+  ${repCharts(c)}${mr?`<h2>آخرین جلسات و اقدام‌ها</h2>${mr}`:''}`;
+}
+function pReport(c){
+  return `<div class="row" style="margin-bottom:10px"><button class="p" data-a="dl">دانلود گزارش (HTML)</button><button data-a="print">چاپ / PDF</button></div><div class="card" id="rep">${repBody(c)}</div>`;
+}
+function dlDoc(c){
+  return `<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>گزارش ${esc(c.name)}</title><style>body{font:15px/1.8 Tahoma,sans-serif;max-width:900px;margin:24px auto;padding:0 16px;color:#1d1d1b}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:6px 8px;border:1px solid #ddd;text-align:right}th{background:#f3f1ec}.mut{color:#777}</style></head><body>${repBody(c)}</body></html>`;
+}
+
+document.addEventListener('click',async e=>{
+  const t=e.target.closest('[data-a]');if(!t)return;e.preventDefault();
+  const a=t.dataset.a,id=t.dataset.id,c=C(),v=s=>($(s)||{}).value;
+  if(!canW()&&!['open','tab','dl','print','login','signup','logout','authTab','approve','reject','rmUser','usersPage'].includes(a))return;
+  if(a==='bk'){backup()}else if(a==='rs'){restore()}else if(a==='login'){doLogin()}
+  else if(a==='signup'){doSignup()}
+  else if(a==='logout'){role=null;showAuth()}
+  else if(a==='authTab'){authTab=id;showAuth()}
+  else if(a==='usersPage'){cur=null;tab='users';render()}
+  else if(a==='approve'&&role==='admin'){approve(id)}
+  else if(a==='reject'&&role==='admin'){db.collection('requests').doc(id).delete()}
+  else if(a==='rmUser'&&role==='admin'){db.collection('members').doc(id).delete()}
+  else if(a==='addClient'){const n=$('#newName').value.trim();if(!n)return;const o=norm({id:uid(),name:n,since:today()});$('#newName').value='';cur=o.id;tab='profile';save(o)}
+  else if(a==='open'){cur=id;tab='profile';confirmDel=null;render()}
+  else if(a==='tab'){tab=id;render()}
+  else if(a==='delClient'){if(confirmDel!==c.id){confirmDel=c.id;render();return}delete clients[c.id];if(db)db.collection('clients').doc(c.id).delete();cur=null;confirmDel=null;render()}
+  else if(a==='saveKpi'){const r=t.closest('[data-kp]'),k=c.kpis.find(x=>x.id===id);k.from=getD(r.querySelector('.kf'));k.to=getD(r.querySelector('.kt'));k.target=parseFloat(r.querySelector('.ktg').value)||0;save(c)}
+  else if(a==='pick'){const e=c.entries.find(x=>x.i===id),r=document.querySelector('[data-k="'+e.k+'"]');setD(r.querySelector('.ed'),e.d);r.querySelector('.ev').value=e.v;r.querySelector('.ev').focus()}
+  else if(a==='addM'){const r=t.closest('[data-m]'),g=parseFloat(r.querySelector('.mg').value)||0,l=parseFloat(r.querySelector('.ml').value)||0,p=c.campaigns.find(x=>x.id===id),dd=getD(r.querySelector('.md2'))||today();p.m=p.m||[];const ex=p.m.find(x=>x.d===dd);if(ex){ex.g=g;ex.l=l}else p.m.push({i:uid(),d:dd,g,l});save(c)}
+  else if(a==='pickM'){const p=c.campaigns.find(x=>x.id===id),e=p.m.find(x=>x.i===t.dataset.e),r=document.querySelector('[data-m="'+id+'"]');setD(r.querySelector('.md2'),e.d);r.querySelector('.mg').value=e.g;r.querySelector('.ml').value=e.l}
+  else if(a==='delM'){const p=c.campaigns.find(x=>x.id===id);p.m=p.m.filter(x=>x.i!==t.dataset.e);save(c)}
+  else if(a==='addKpi'){const n=v('#kn').trim();if(!n)return;c.kpis.push({id:uid(),name:n,unit:v('#ku'),target:parseFloat(v('#kt'))||0,from:getD($('#kfrom')),to:getD($('#kto'))});save(c)}
+  else if(a==='delKpi'){c.kpis=c.kpis.filter(k=>k.id!==id);c.entries=c.entries.filter(x=>x.k!==id);save(c)}
+  else if(a==='addEntry'){const r=t.closest('[data-k]'),val=parseFloat(r.querySelector('.ev').value);if(isNaN(val)){toast('مقدار را وارد کنید');return}const dd=getD(r.querySelector('.ed'))||today(),ex=c.entries.find(x=>x.k===id&&x.d===dd);if(ex)ex.v=val;else c.entries.push({i:uid(),k:id,d:dd,v:val});save(c)}
+  else if(a==='delEntry'){c.entries=c.entries.filter(x=>x.i!==id);save(c)}
+  else if(a==='addCamp'){const n=v('#cn').trim();if(!n)return;c.campaigns.push({id:uid(),name:n,channel:v('#cc'),budget:parseFloat(v('#cb'))||0,start:getD($('#cs')),end:getD($('#ce')),status:'plan',notes:''});save(c)}
+  else if(a==='delCamp'){c.campaigns=c.campaigns.filter(p=>p.id!==id);save(c)}
+  else if(a==='addMeet'){const x=v('#mt').trim();if(!x)return;c.meetings.push({id:uid(),d:getD($('#md'))||today(),t:x});save(c)}
+  else if(a==='delMeet'){c.meetings=c.meetings.filter(m=>m.id!==id);save(c)}
+  else if(a==='print'){try{window.print()}catch(x){toast('از دانلود گزارش استفاده کنید')}}
+  else if(a==='dl'){
+    try{const d=window.claude?await claude.use('downloads'):{save:async r=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([r.data],{type:'text/html'}));a.download=r.filename;a.click()}};if(!d)throw 0;await d.save({filename:'گزارش-'+c.name+'.html',data:dlDoc(c)});toast('ذخیره شد')}catch(x){toast('دانلود انجام نشد')}
+  }
+});
+document.addEventListener('change',e=>{
+  const c=C();if(!c||!canW())return;const t=e.target;
+  if(t.closest('.jd')){const j=t.closest('.jd');if(j.dataset.f){c[j.dataset.f]=getD(j);save(c)}}
+  else if(t.dataset.f){c[t.dataset.f]=t.value;save(c)}
+  else if(t.dataset.cf){const p=c.campaigns.find(x=>x.id===(t.dataset.c||t.closest('[data-c]').dataset.c));if(p){p[t.dataset.cf]=t.value;save(c)}}
+});
+
+async function startData(){
+  render();
+  
+  if(!db){return}if(0){$('#notice').textContent='ذخیره‌سازی دائمی در دسترس نیست؛ داده‌ها فقط تا بستن صفحه می‌مانند.';return}
+  db.collection('clients').onSnapshot(s=>{
+    clients={};s.docs.forEach(d=>clients[d.id]=norm(JSON.parse(JSON.stringify({...d.data(),id:d.id}))));
+    if(cur&&!clients[cur])cur=null;
+    const ae=document.activeElement;if(!(ae&&/INPUT|TEXTAREA|SELECT/.test(ae.tagName)))render();else renderList();
+  },()=>toast('خطا در بارگذاری داده‌ها'));
+}
+const ROLES={admin:'مدیر',consultant:'مشاور',viewer:'مشاهده‌گر'};
+const canW=()=>role==='admin'||role==='consultant';
+const roleOpts=s=>Object.entries(ROLES).map(([k,n])=>`<option value="${k}" ${k===s?'selected':''}>${n}</option>`).join('');
+function lock(m){m.querySelectorAll('input,select,textarea').forEach(e=>e.disabled=true);m.querySelectorAll('[data-a]').forEach(b=>{if(!['tab','dl','print'].includes(b.dataset.a))b.remove()})}
+function applyRole(){const r=$('#newRow');if(r)r.hidden=!canW();$('#me').innerHTML=me&&role?`<div class="chip"><b>${esc(me.name||'کاربر')}</b><span class="badge">${ROLES[role]}</span></div>${role==='admin'&&Object.keys(reqs).length?'<div class="badge" style="margin-top:6px">'+nz(Object.keys(reqs).length)+' درخواست ثبت‌نام جدید</div>':''}${canW()?'<div class="row" style="margin-top:6px"><button class="s" data-a="bk">پشتیبان‌گیری</button>'+(role==='admin'?'<button class="s" data-a="rs">بازیابی</button>':'')+'</div>':''}${realRole==='admin'?'<label style="margin-top:6px">نمایش به‌عنوان<select data-va>'+roleOpts(role)+'</select></label>':''}${window.canDb===false?'<div class="badge dn" style="margin-top:6px">اجازهٔ ذخیره ندارید؛ سطح دسترسی لینک را بررسی کنید</div>':''}<div class="row" style="margin-top:6px">${role==='admin'?'<button class="s" data-a="usersPage">کاربران و دسترسی</button>':''}<button class="s" data-a="logout">خروج</button></div>`:''}
+function renderUsers(){
+  const rq=Object.entries(reqs),mb=Object.entries(users);
+  $('#main').innerHTML=`<div class="card"><h1>کاربران و سطح دسترسی</h1><div class="mut">مدیر: همه‌چیز و مدیریت کاربران · مشاور: ثبت و ویرایش · مشاهده‌گر: فقط دیدن و گزارش</div></div>
+  <div class="card"><h2>درخواست‌های ثبت‌نام</h2>${rq.length?rq.map(([i,r])=>`<div class="row" style="justify-content:space-between;align-items:center;margin-bottom:8px"><div><b>${esc(r.name)}</b><div class="mut">${esc(r.info||'')}</div></div><div class="row"><select id="rl-${i}">${roleOpts('viewer')}</select><button class="p s" data-a="approve" data-id="${i}">تأیید</button><button class="d s" data-a="reject" data-id="${i}">رد</button></div></div>`).join(''):'<div class="mut">درخواستی نیست.</div>'}</div>
+  <div class="card"><h2>کاربران فعال</h2>${mb.map(([i,u])=>`<div class="row" style="justify-content:space-between;align-items:center;margin-bottom:8px"><div><b>${esc(u.name)}</b><div class="mut">${esc(u.info||'')}</div></div><div class="row"><select data-ur="${i}" ${i===uidv?'disabled':''}>${roleOpts(u.role)}</select>${i===uidv?'':`<button class="d s" data-a="rmUser" data-id="${i}">حذف</button>`}</div></div>`).join('')}</div>`;
+}
+function approve(i){const r=reqs[i],rl=$('#rl-'+i).value;db.collection('members').doc(i).set({name:r.name,info:r.info||'',role:rl,at:Date.now()}).then(()=>db.collection('requests').doc(i).delete()).catch(()=>toast('خطا'))}
+document.addEventListener('change',e=>{const t=e.target;if(t.dataset.va!==undefined){role=t.value;tab='profile';cur=null;render();return}if(t.dataset.ur&&role==='admin'&&t.dataset.ur!==uidv)db.collection('members').doc(t.dataset.ur).update({role:t.value}).catch(()=>toast('خطا'))});
+async function doLogin(){try{const m=await db.collection('members').doc(uidv).get();if(m.exists){users[uidv]=m.data();enter();return}}catch(x){toast('خطا: '+((x&&(x.code||x.message))||x))}if(users[uidv]){enter();return}const s=await db.collection('requests').doc(uidv).get();if(s.exists)toast('درخواست شما در انتظار تأیید مدیر است');else{toast('ابتدا ثبت‌نام کنید');authTab='signup';showAuth()}}
+async function doSignup(){const n=$('#sn').value.trim();if(!n){toast('نام را وارد کنید');return}if(users[uidv]){toast('شما قبلاً عضو هستید');enter();return}try{await db.collection('requests').doc(uidv).set({name:n,info:$('#si').value.trim(),at:Date.now()});authTab='login';toast('درخواست ارسال شد؛ منتظر تأیید مدیر باشید')}catch(x){toast('ثبت نشد')}showAuth()}
+function enter(){realRole=role=users[uidv].role;$('#auth').hidden=true;$('#appw').hidden=false;if(!started){started=true;startData()}
+  if(role==='admin'&&!rqSub)rqSub=db.collection('requests').onSnapshot(s=>{reqs={};s.docs.forEach(d=>reqs[d.id]=d.data());applyRole();if(tab==='users'&&cur===null)renderUsers()},()=>{});
+  tab='profile';cur=null;render()}
+function showAuth(msg){
+  $('#appw').hidden=true;const a=$('#auth');a.hidden=false;
+  a.innerHTML=`<div class="authwrap"><div class="authcard"><div class="logo">◆</div><h1>داشبورد مشاوره برند</h1><p class="mut">مدیریت مجموعه‌ها، KPIها، کمپین‌ها و گزارش</p>
+  <div class="tabs"><button class="${authTab==='login'?'on':''}" data-a="authTab" data-id="login">ورود</button><button class="${authTab==='signup'?'on':''}" data-a="authTab" data-id="signup">ثبت‌نام</button></div>
+  ${msg?`<p class="dn">${esc(msg)}</p>`:authTab==='login'?`<p>ورود با حساب فعلی${me?': <b>'+esc(me.name)+'</b>':''}</p><button class="p w" data-a="login">ورود به داشبورد</button><p class="mut">رمز جداگانه لازم نیست؛ هویت شما از حساب Claude شناخته می‌شود.</p>`:`<label>نام و نام خانوادگی<input id="sn"></label><label style="margin-top:8px">شماره تماس یا سمت<input id="si"></label><button class="p w" style="margin-top:12px" data-a="signup">ارسال درخواست ثبت‌نام</button><p class="mut">پس از تأیید مدیر و تعیین سطح دسترسی می‌توانید وارد شوید.</p>`}</div></div>`}
+function localMode(){
+  const K='cd_',subs={},ld=c=>{try{return JSON.parse(localStorage.getItem(K+c)||'{}')}catch(e){return{}}};
+  const snap=c=>({docs:Object.entries(ld(c)).map(([id,d])=>({id,exists:true,data:()=>d}))});
+  const sv=(c,o)=>{localStorage.setItem(K+c,JSON.stringify(o));(subs[c]||[]).forEach(f=>f(snap(c)))};
+  db={collection:c=>({onSnapshot(f){(subs[c]=subs[c]||[]).push(f);setTimeout(()=>f(snap(c)),0);return()=>{}},doc:id=>({async set(d){const o=ld(c);o[id]=d;sv(c,o)},async update(d){const o=ld(c);o[id]=Object.assign(o[id]||{},d);sv(c,o)},async delete(){const o=ld(c);delete o[id];sv(c,o)},async get(){const d=ld(c)[id];return{exists:!!d,data:()=>d}}})})};
+  user={me:async()=>({name:'من'}),id:async()=>'local',isOwner:async()=>true,canEdit:async()=>true,can:async()=>true};
+  window.LOCAL=true}
+function backup(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({clients})],{type:'application/json'}));a.download='backup-'+today()+'.json';a.click()}
+function restore(){const i=document.createElement('input');i.type='file';i.accept='.json';i.onchange=async()=>{try{const o=JSON.parse(await i.files[0].text());Object.values(o.clients||{}).forEach(c=>db.collection('clients').doc(c.id).set(c));toast('بازیابی شد')}catch(x){toast('فایل نامعتبر')}};i.click()}
+async function boot(){
+  try{db=await claude.use('db');user=await claude.use('user')}catch(e){}
+  if(!db&&!window.claude)localMode();
+  if(!db||!user){showAuth('برای استفاده باید با حساب Claude وارد شده باشید و لینک اشتراک را باز کنید.');return}
+  me=await user.me();uidv=await user.id();window.canDb=await user.can('data.write');let first=true;
+  db.collection('members').onSnapshot(async s=>{
+    users={};s.docs.forEach(d=>users[d.id]=d.data());
+    if(first){first=false;isEd=await user.isOwner();if(isEd&&(!users[uidv]||users[uidv].role!=='admin')){const u={name:me.name||'مدیر',info:'مالک',role:'admin',at:Date.now()};try{await db.collection('members').doc(uidv).set(u);users[uidv]=u}catch(x){}}
+      if(users[uidv])enter();else showAuth();return}
+    if(isEd&&users[uidv]&&users[uidv].role!=='admin'){db.collection('members').doc(uidv).update({role:'admin'});return}if(role){if(!users[uidv]){role=null;showAuth();return}if(users[uidv].role!==realRole){realRole=role=users[uidv].role;render()}else if(tab==='users'&&cur===null)renderUsers()}
+  },()=>showAuth('خطا در اتصال به داده‌ها'));
+}
+addEventListener('error',e=>toast('خطا: '+e.message));addEventListener('unhandledrejection',e=>toast('خطا: '+((e.reason&&(e.reason.code||e.reason.message))||e.reason)));boot();
+</script>
+</body>
+</html>
